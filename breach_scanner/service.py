@@ -1,6 +1,14 @@
 import json
 import requests
+# Add at top
+from pydantic import BaseModel
 
+class BreachItem(BaseModel):
+    name: str
+    year: int
+    data_exposed: list[str]
+    severity: str
+    source: str
 def scan_email(email: str):
     # ---- 1. Try LeakCheck API ----
     try:
