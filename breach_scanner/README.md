@@ -1,5 +1,5 @@
 ## 1. What this service does
-This service scans an email against a local dataset to identify breaches. It acts as a microservice in a larger system, providing breach information in a structured format.
+This service scans an email against a local dataset to identify breaches.
 
 ## 2. File explanations
 - main.py: Contains the FastAPI application and the API endpoint for scanning emails.
