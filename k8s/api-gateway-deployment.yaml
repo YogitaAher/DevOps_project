@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api-gateway
 spec:
-  replicas: 2
+  replicas: 1   # ✅ IMPORTANT: only 1 for SQLite
   selector:
     matchLabels:
       app: api-gateway
@@ -24,3 +24,14 @@ spec:
           value: "http://github-scanner:8002"
         - name: RISK_ANALYZER_URL
           value: "http://risk-analyzer:8003"
+
+        # ✅ ADD THIS (mount volume)
+        volumeMounts:
+        - name: api-storage
+          mountPath: /app/data
+
+      # ✅ ADD THIS (connect PVC)
+      volumes:
+      - name: api-storage
+        persistentVolumeClaim:
+          claimName: api-gateway-pvc

@@ -3,11 +3,10 @@ import json
 from datetime import datetime
 import uuid
 
-DB_NAME = "scans.db"
 
 
 def get_connection():
-    return sqlite3.connect(DB_NAME)
+    return sqlite3.connect("data/scans.db")
 
 
 def init_db():
