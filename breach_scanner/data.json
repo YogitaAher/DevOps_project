@@ -1,0 +1,152 @@
+[
+  {
+    "email": "user1@gmail.com",
+    "breach": "LinkedIn",
+    "year": 2021,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user2@gmail.com",
+    "breach": "Twitter",
+    "year": 2022,
+    "data_exposed": ["email", "password", "phone"]
+  },
+  {
+    "email": "user2@gmail.com",
+    "breach": "Yahoo",
+    "year": 2013,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user3@gmail.com",
+    "breach": "Adobe",
+    "year": 2013,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user3@gmail.com",
+    "breach": "Dropbox",
+    "year": 2016,
+    "data_exposed": ["email", "username"]
+  },
+  {
+    "email": "user4@gmail.com",
+    "breach": "MySpace",
+    "year": 2016,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user4@gmail.com",
+    "breach": "Sony",
+    "year": 2011,
+    "data_exposed": ["email", "password", "phone"]
+  },
+  {
+    "email": "user5@gmail.com",
+    "breach": "eBay",
+    "year": 2014,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user5@gmail.com",
+    "breach": "Tumblr",
+    "year": 2013,
+    "data_exposed": ["email", "username"]
+  },
+  {
+    "email": "user6@gmail.com",
+    "breach": "Ashley Madison",
+    "year": 2015,
+    "data_exposed": ["email", "password", "phone"]
+  },
+  {
+    "email": "user6@gmail.com",
+    "breach": "Uber",
+    "year": 2016,
+    "data_exposed": ["email", "phone"]
+  },
+  {
+    "email": "user7@gmail.com",
+    "breach": "Equifax",
+    "year": 2017,
+    "data_exposed": ["email", "phone"]
+  },
+  {
+    "email": "user7@gmail.com",
+    "breach": "Capital One",
+    "year": 2019,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user8@gmail.com",
+    "breach": "Marriott",
+    "year": 2018,
+    "data_exposed": ["email", "password", "phone"]
+  },
+  {
+    "email": "user8@gmail.com",
+    "breach": "British Airways",
+    "year": 2018,
+    "data_exposed": ["email", "phone"]
+  },
+  {
+    "email": "user9@gmail.com",
+    "breach": "T-Mobile",
+    "year": 2021,
+    "data_exposed": ["email", "phone"]
+  },
+  {
+    "email": "user9@gmail.com",
+    "breach": "Microsoft",
+    "year": 2020,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user10@gmail.com",
+    "breach": "Canva",
+    "year": 2019,
+    "data_exposed": ["email", "username"]
+  },
+  {
+    "email": "user10@gmail.com",
+    "breach": "Zynga",
+    "year": 2019,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user11@gmail.com",
+    "breach": "Wattpad",
+    "year": 2020,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user11@gmail.com",
+    "breach": "Clubhouse",
+    "year": 2021,
+    "data_exposed": ["email", "phone"]
+  },
+  {
+    "email": "user12@gmail.com",
+    "breach": "Discord",
+    "year": 2022,
+    "data_exposed": ["email", "username"]
+  },
+  {
+    "email": "user12@gmail.com",
+    "breach": "Roblox",
+    "year": 2022,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user13@gmail.com",
+    "breach": "Epic Games",
+    "year": 2023,
+    "data_exposed": ["email", "password"]
+  },
+  {
+    "email": "user13@gmail.com",
+    "breach": "Steam",
+    "year": 2023,
+    "data_exposed": ["email", "username"]
+  }
+]

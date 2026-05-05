@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: breach-scanner
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: breach-scanner
+  template:
+    metadata:
+      labels:
+        app: breach-scanner
+    spec:
+      containers:
+      - name: breach-scanner
+        image: yogitaaher/breach-scanner
+        ports:
+        - containerPort: 8001

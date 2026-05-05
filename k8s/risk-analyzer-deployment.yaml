@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-analyzer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: risk-analyzer
+  template:
+    metadata:
+      labels:
+        app: risk-analyzer
+    spec:
+      containers:
+      - name: risk-analyzer
+        image: yogitaaher/risk-analyzer
+        ports:
+        - containerPort: 8003

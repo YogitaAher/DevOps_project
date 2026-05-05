@@ -1,0 +1,114 @@
+{
+  "leaks": [
+    {
+      "repo": "YogitaAher/hardcoded-credentials-demo",
+      "file": "users.txt",
+      "type": "EMAIL",
+      "severity": "LOW",
+      "source": "github",
+      "value": "tes***com",
+      "line": 3,
+      "snippet": "testuser@company.com",
+      "score": 3
+    },
+    {
+      "repo": "YogitaAher/hardcoded-credentials-demo",
+      "file": "config.py",
+      "type": "PASSWORD",
+      "severity": "HIGH",
+      "source": "github",
+      "value": "adm***123",
+      "line": 10,
+      "snippet": "PASSWORD = \"admin@123\"",
+      "score": 10
+    },
+    {
+      "repo": "YogitaAher/api-leak-demo",
+      "file": ".env",
+      "type": "API_KEY",
+      "severity": "HIGH",
+      "source": "github",
+      "value": "sk_***890",
+      "line": 5,
+      "snippet": "API_KEY=sk_test_51H8abcXYZ1234567890",
+      "score": 9
+    },
+    {
+      "repo": "YogitaAher/api-leak-demo",
+      "file": "app.js",
+      "type": "SECRET",
+      "severity": "MEDIUM",
+      "source": "github",
+      "value": "jwt***123",
+      "line": 8,
+      "snippet": "const JWT_SECRET = \"myjwtsecretkey123\";",
+      "score": 8
+    },
+    {
+      "repo": "YogitaAher/aws-demo",
+      "file": "credentials.txt",
+      "type": "AWS_KEY",
+      "severity": "HIGH",
+      "source": "github",
+      "value": "AKI***XYZ",
+      "line": 2,
+      "snippet": "AKIAIOSFODNN7EXAMPLE",
+      "score": 10
+    },
+    {
+      "repo": "YogitaAher/token-demo",
+      "file": "auth.py",
+      "type": "GITHUB_TOKEN",
+      "severity": "HIGH",
+      "source": "github",
+      "value": "ghp***abc",
+      "line": 14,
+      "snippet": "token = \"ghp_1234567890abcdefghijklmnopqrstuvwxyz\"",
+      "score": 9
+    },
+    {
+      "repo": "YogitaAher/random-secrets",
+      "file": "data.json",
+      "type": "ENTROPY_SECRET",
+      "severity": "MEDIUM",
+      "source": "github",
+      "value": "a8F***9Lp",
+      "line": 22,
+      "snippet": "\"key\": \"a8F7sK2l9PqXz1LmN\"",
+      "score": 7
+    },
+    {
+      "repo": "YogitaAher/config-demo",
+      "file": ".env",
+      "type": "PASSWORD",
+      "severity": "HIGH",
+      "source": "github",
+      "value": "Sup***123",
+      "line": 3,
+      "snippet": "DB_PASSWORD=SuperSecret123",
+      "score": 10
+    },
+    {
+      "repo": "YogitaAher/config-demo",
+      "file": ".env",
+      "type": "SECRET",
+      "severity": "MEDIUM",
+      "source": "github",
+      "value": "myj***123",
+      "line": 6,
+      "snippet": "JWT_SECRET=myjwtsecretkey123",
+      "score": 8
+    },
+    {
+      "repo": "YogitaAher/mixed-demo",
+      "file": "settings.yaml",
+      "type": "API_KEY",
+      "severity": "HIGH",
+      "source": "github",
+      "value": "AIza***XYZ",
+      "line": 12,
+      "snippet": "google_api_key: AIzaSyA1234567890abcdefXYZ",
+      "score": 9
+    }
+  ]
+}
