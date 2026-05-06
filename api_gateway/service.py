@@ -1,11 +1,17 @@
+import logging
 import requests
 from db import insert_scan, get_last_two_scans
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("api_gateway")
+
 BREACH_URL = "http://breach-scanner:8001"
 GITHUB_URL = "http://github-scanner:8002"
 RISK_URL = "http://risk-analyzer:8003"
 
 
 def call_breach_scanner(email: str):
+    logger.info("Calling breach scanner for email=%s", email)
     try:
         response = requests.post(
             f"{BREACH_URL}/scan/email",
@@ -13,14 +19,17 @@ def call_breach_scanner(email: str):
             timeout=5
         )
         response.raise_for_status()
-        return response.json().get("breaches", [])
+        breaches = response.json().get("breaches", [])
+        logger.info("Breach scanner returned %d items", len(breaches))
+        return breaches
     except requests.exceptions.RequestException as e:
-        print("Breach Error:", e)
+        logger.error("Breach Error: %s", e)
 
     return []
 
 
 def call_github_scanner(username: str):
+    logger.info("Calling GitHub scanner for username=%s", username)
     try:
         response = requests.post(
             f"{GITHUB_URL}/scan/github",
@@ -31,12 +40,13 @@ def call_github_scanner(username: str):
 
         data = response.json()
         leaks = data.get("leaks", [])
+        logger.info("GitHub scanner returned %d leaks", len(leaks))
 
         # ✅ Deduplicate here (defensive layer)
         return deduplicate_leaks(leaks)
 
     except requests.exceptions.RequestException as e:
-        print("GitHub Error:", e)
+        logger.error("GitHub Error: %s", e)
 
     return []
 
@@ -83,6 +93,23 @@ def compute_comparison(history):
         "trend": trend
     }
 
+def call_risk_analyzer(payload: dict):
+    logger.info("Calling risk analyzer with email=%s username=%s", payload.get("email"), payload.get("username"))
+    try:
+        response = requests.post(
+            f"{RISK_URL}/analyze/risk",
+            json=payload,
+            timeout=10
+        )
+        response.raise_for_status()
+        result = response.json()
+        logger.info("Risk analyzer returned status=%s", response.status_code)
+        return result
+    except requests.exceptions.RequestException as e:
+        logger.error("Risk Analyzer Error: %s", e)
+        raise
+
+
 def aggregate_data(email: str, username: str):
 
     # Step 1: Call scanners
@@ -98,44 +125,33 @@ def aggregate_data(email: str, username: str):
         "github_leaks": github_leaks
     }
 
-    print("Sending to risk analyzer:", combined)
+    logger.info("Sending to risk analyzer: %s", combined)
 
     # Step 3: Send to Risk Analyzer
     try:
-        response = requests.post(
-            f"{RISK_URL}/analyze/risk",
-            json=combined,
-            timeout=10   # slightly increased
-        )
+        result = call_risk_analyzer(combined)
+        # ✅ store in DB
+        try:
+            insert_scan(result)
+        except Exception as e:
+            logger.error("DB Insert Error: %s", e)
 
-        print("Risk Analyzer Status:", response.status_code)
-        print("Risk Analyzer Response:", response.text)
+        # ✅ fetch last 2 scans
+        history = get_last_two_scans(email)
 
-        if response.status_code == 200:
-            result = response.json()
-            # ✅ store in DB
-            try:
-                insert_scan(result)
-            except Exception as e:
-                print("DB Insert Error:", e)
+        # ✅ attach history (for now)
+        comparison = compute_comparison(history)
 
-            # ✅ fetch last 2 scans
-            history = get_last_two_scans(email)
+        result["history"] = history
 
-            # ✅ attach history (for now)
-            comparison = compute_comparison(history)
+        if comparison:
+            result["comparison"] = comparison
 
-            result["history"] = history
+        logger.info("Returning aggregated response")
+        return result
 
-            if comparison:
-                result["comparison"] = comparison
-
-            return result
-
-    except Exception as e:
-        print("Risk Analyzer Error:", e)
-
-    return {
-        "error": "Risk analysis failed",
-        "data": combined
-    }
+    except Exception:
+        return {
+            "error": "Risk analysis failed",
+            "data": combined
+        }

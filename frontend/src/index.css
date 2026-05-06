@@ -1,0 +1,141 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  color: #6366f1;
+  margin: 0 0 12px 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  line-height: 1.05;
+}
+
+.badge {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #3730a3;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+}
+
+label {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #d1d5db;
+  padding: 12px 14px;
+  background: #f8fafc;
+}
+
+button {
+  border: none;
+  color: #ffffff;
+  background: #4f46e5;
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.response-box {
+  margin-top: 18px;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 16px;
+}
+
+.response-meta {
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.json-output {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 16px;
+  border-radius: 14px;
+  overflow: auto;
+}
+
+.error {
+  margin-top: 12px;
+  color: #dc2626;
+  font-weight: 600;
+}
