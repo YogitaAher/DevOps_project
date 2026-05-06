@@ -10,7 +10,15 @@ app = FastAPI(title="API Gateway")
 from db import init_db
 
 init_db()
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow frontend (demo mode)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.post("/scan/email")
 def scan_email(request: EmailRequest):
     logger.info("Received /scan/email request: %s", request.dict())
