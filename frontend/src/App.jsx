@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:30007";
-
+const API_BASE =
+  import.meta.env.VITE_API_URL || "http://54.158.223.156:30007";
 function renderJson(value) {
   return <pre className="json-output">{JSON.stringify(value, null, 2)}</pre>;
 }
